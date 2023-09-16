@@ -28,7 +28,7 @@
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
-		background: var(--accent2);
+		background: var(--accent4);
 		height: 96px;
 		max-width: 100%;
 		overflow: hidden;
