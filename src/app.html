@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Home - Natcotine</title>
+		%sveltekit.head%
+	</head>
+	<body>
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>
+
+<style>
+	:root {
+		--background: #020100;
+		--accent1: #ed1c24;
+		--accent2: #235789;
+		--accent3: #f1d302;
+		--accent4: #fdfffc;
+
+		background-color: var(--background);
+	}
+
+	main {
+		padding: 1em;
+		max-width: calc(100% - 190px - 190px);
+		margin: 0 auto;
+		overflow-x: hidden;
+	}
+
+	p {
+		color: var(--accent4);
+	}
+
+	h2 {
+		color: var(--accent2);
+	}
+
+	h3 {
+		color: var(--accent4);
+		text-decoration: underline;
+	}
+</style>
