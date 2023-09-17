@@ -8,7 +8,7 @@
 		<script>
 			const url = "http://colormind.io/api/";
 			const data = {
-				model: "default",
+				model: "ui",
 				input: [[80, 50, 87], [151, 115, 144], [172, 123, 125], [187, 138, 137], "N"]
 			};
 
@@ -18,6 +18,10 @@
 				if(http.readyState === 4 && http.status === 200) {
 					const palette = JSON.parse(http.responseText).result;
 
+					document.documentElement.setAttribute("style", `--accent1: rgb(${palette[0].join()})`);
+					document.documentElement.setAttribute("style", `--accent2: rgb(${palette[1].join()})`);
+					document.documentElement.setAttribute("style", `--accent3: rgb(${palette[2].join()})`);
+					document.documentElement.setAttribute("style", `--accent4: rgb(${palette[3].join()})`);
 					document.documentElement.setAttribute("style", `--background: rgb(${palette[4].join()})`);
 				}
 			}
@@ -34,7 +38,7 @@
 
 <style>
 	:root {
-		--background: #A29194;
+		--background: rgb(162, 145, 148);
 		--accent1: rgb(80, 50, 87);
 		--accent2: rgb(151, 115, 144);
 		--accent3: rgb(172, 123, 125);
