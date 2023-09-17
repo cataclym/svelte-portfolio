@@ -86,20 +86,24 @@
 
 	.aboutImg {
 		margin: 0 auto auto auto;
+		margin-left: 1em;
 	}
 
 	.aboutParagraph {
-		margin: 0 1em auto auto;
-		max-width: 50%;
+		margin: 0 auto auto auto;
+		margin-right: 1em;
+		max-width: 20%;
 	}
 
 	.aboutHeading {
-		margin: 0 30px auto auto;
-		width: 49.2%;
+		margin: auto;
+		margin-right: 1em;
+		width: 20%;
 	}
 
 	.flexItemHidden {
-		margin: auto;
+		margin: 0 auto auto auto;
+		margin-left: 1em;
 		width: 435px;
 		height: 100%;
 	}
@@ -108,10 +112,41 @@
 		margin: 4em 0 0 0;
 	}
 
-	@media only screen and (min-width: 768px) {
+	@media only screen and (max-width: 768px) {
 		.aboutImg {
 			width: 200px;
 			height: 200px;
+		}
+
+		.aboutParagraph {
+			max-width: 100%;
+		}
+
+		main {
+			max-width: 100%;
+		}
+
+		.aboutHeading {
+			width: 100%;
+		}
+	}
+
+	@media only screen and (min-width: 768px) {
+		.aboutImg {
+			width: 300px;
+			height: 300px;
+		}
+
+		.aboutParagraph {
+			max-width: 50%;
+		}
+
+		main {
+			max-width: 90%;
+		}
+
+		.aboutHeading {
+			width: 100%;
 		}
 	}
 
@@ -119,6 +154,14 @@
 		.aboutImg {
 			width: 435px;
 			height: 435px;
+		}
+
+		.aboutParagraph {
+			max-width: 20%;
+		}
+
+		.aboutHeading {
+			width: 20%;
 		}
 	}
 
