@@ -4,6 +4,28 @@
 		<meta charset="UTF-8" />
 		<title>Digital Portfolio</title>
 		%sveltekit.head%
+
+		<script>
+			const url = "http://colormind.io/api/";
+			const data = {
+				model: "default",
+				input: [[80, 50, 87], [151, 115, 144], [172, 123, 125], [187, 138, 137], "N"]
+			};
+
+			const http = new XMLHttpRequest();
+
+			http.onreadystatechange = function() {
+				if(http.readyState === 4 && http.status === 200) {
+					const palette = JSON.parse(http.responseText).result;
+
+					document.documentElement.setAttribute("style", `--background: rgb(${palette[4].join()})`);
+				}
+			}
+
+			http.open("POST", url, true);
+			http.send(JSON.stringify(data));
+
+		</script>
 	</head>
 	<body>
 		<div style="display: contents">%sveltekit.body%</div>
@@ -12,11 +34,11 @@
 
 <style>
 	:root {
-		--background: #f9f4f5;
-		--accent1: #503257;
-		--accent2: #977390;
-		--accent3: #ac7b7d;
-		--accent4: #bb8a89;
+		--background: #A29194;
+		--accent1: rgb(80, 50, 87);
+		--accent2: rgb(151, 115, 144);
+		--accent3: rgb(172, 123, 125);
+		--accent4: rgb(187, 138, 137);
 
 		background-color: var(--background);
 	}
@@ -33,17 +55,17 @@
 	}
 
 	h2 {
-		color: var(--accent3);
+		color: var(--accent1);
 	}
 
 	h2.frontPageHeader3 {
 		color: var(--accent1);
-		border-bottom: 2px solid var(--accent3);
+		border-bottom: 2px solid var(--accent2);
 	}
 
 	h3.frontPageHeader3 {
 		color: var(--accent1);
-		border-bottom: 2px solid var(--accent3);
+		border-bottom: 2px solid var(--accent2);
 	}
 
 	.aboutContainer {
