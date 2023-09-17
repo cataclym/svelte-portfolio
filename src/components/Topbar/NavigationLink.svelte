@@ -14,7 +14,7 @@
 <style>
 	.linkContainer {
 		padding: 8px;
-		color: var(--accent3);
+		color: var(--background);
 	}
 
 	/*.linkContainer:hover,*/
@@ -31,7 +31,7 @@
 
 	span.current,
 	.linktext:hover {
-		border-bottom: 5px solid var(--accent3);
+		border-bottom: 5px solid var(--accent4);
 	}
 
 	.primary {

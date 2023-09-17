@@ -12,11 +12,11 @@
 
 <style>
 	:root {
-		--background: #141414;
-		--accent1: #3d5a80;
-		--accent2: #98c1d9;
-		--accent3: #e0fbfc;
-		--accent4: #a17c6b;
+		--background: #f9f4f5;
+		--accent1: #503257;
+		--accent2: #977390;
+		--accent3: #ac7b7d;
+		--accent4: #bb8a89;
 
 		background-color: var(--background);
 	}
@@ -29,15 +29,49 @@
 	}
 
 	p {
-		color: var(--accent2);
+		color: var(--accent1);
 	}
 
 	h2 {
 		color: var(--accent3);
 	}
 
-	h3 {
-		color: var(--accent2);
+	h2.frontPageHeader3 {
+		color: var(--accent1);
 		border-bottom: 2px solid var(--accent3);
+	}
+
+	h3.frontPageHeader3 {
+		color: var(--accent1);
+		border-bottom: 2px solid var(--accent3);
+	}
+
+	.aboutContainer {
+		display: flex;
+		padding-bottom: 1rem;
+	}
+
+	.aboutImg {
+		margin: 0 auto auto auto;
+	}
+
+	.aboutParagraph {
+		margin: 0 1em auto auto;
+		max-width: 50%;
+	}
+
+	.aboutHeading {
+		margin: 0 30px auto auto;
+		width: 48%;
+	}
+
+	.flexItemHidden {
+		margin: auto;
+		width: 435px;
+		height: 100%;
+	}
+
+	#topContainer {
+		margin: 4em 0 0 0;
 	}
 </style>
