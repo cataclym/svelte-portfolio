@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+User-agent: Googlebot
+
+# Optimization for Google Ads Bot
+User-agent: AdsBot-Google-Mobile
+User-agent: AdsBot-Google
+Disallow: /animations*
+Disallow: /illustrations*
+
+# Block PetalBot
+User-agent: PetalBot
+Disallow: /
+
+# Crawl delay for overly enthusiastic bots
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+# @Cata 2023

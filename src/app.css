@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --accent1: rgb(222,215,208);
+    --accent2: rgb(161,126,154);
+    --accent3: rgb(175,122,126);
+    --accent4: rgb(190,137,138);
+    --background: rgb(77,63,109);
+
+    background-color: var(--background);
+}
+
+html {
+    font-family: "Source Sans Pro", SansSerif;
+    min-height: 100vh;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+main {
+    padding: 0;
+    margin: 0 auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    min-height: 87vh;
+}
+
+p {
+    color: var(--accent1);
+}
+
+h2 {
+    color: var(--accent1);
+}
+
+h2.frontPageHeader3 {
+    color: var(--accent1);
+    font-weight: bolder;
+    font-size: xxx-large;
+    border-bottom: 4px solid var(--accent2);
+    margin-bottom: 2rem;
+}
+
+h3.frontPageHeader3 {
+    color: var(--accent1);
+    border-bottom: 2px solid var(--accent2);
+}
+
+.flexItemHidden {
+    margin: 0 auto auto 1em;
+    width: 435px;
+    height: 100%;
+}
+
+#topContainer {
+    margin: 4em 0 0 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .aboutImg {
+        width: 200px;
+        height: 200px;
+    }
+
+    .aboutParagraph {
+        max-width: 100%;
+    }
+
+    main {
+        max-width: 100%;
+    }
+
+
+}
+
+@media only screen and (min-width: 768px) {
+    .aboutImg {
+        width: 300px;
+        height: 300px;
+    }
+
+    .aboutParagraph {
+        max-width: 50%;
+    }
+
+    main {
+        max-width: 90%;
+    }
+
+    .aboutHeading {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .aboutImg {
+        width: 435px;
+        height: 435px;
+    }
+
+    .aboutParagraph {
+        max-width: 20%;
+    }
+
+    .aboutHeading {
+        width: 20%;
+    }
+}
+
+.grid_containter {
+    display: grid;
+    place-content: space-evenly;
+    grid-template-columns: 100px 435px 435px 100px;
+    grid-column-gap: 2rem;
+    grid-template-rows: auto;
+    grid-template-areas:
+        ". header header ."
+        ". paragraph image .";
+}
+
+.grid_item_paragraph {
+    grid-area: paragraph;
+    margin-block-start: 0 !important;
+}
+
+.grid_item_img {
+    grid-area: image;
+}
+
+.grid_header {
+    grid-area: header;
+    width: fit-content;
+}
+
+.contact_page a {
+    color: var(--accent4);
+    display: inline-block;
+    text-decoration: none;
+    font-size: larger;
+    transition: .3s;
+    position: absolute;
+}
+
+.contact_page a:hover {
+    text-decoration-color: var(--accent2);
+    text-decoration-style: solid;
+    text-decoration-thickness: 2px;
+    text-decoration-line: underline;
+    transform: scale(1.04);
+}
+
+.contact_page h3 {
+    color: var(--accent1);
+}

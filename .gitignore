@@ -221,3 +221,13 @@ dist
 .svelte-kit/
 package
 
+!/src/lib/images/
+!/public/not/
+!/src/lib/images/
+
+build/
+
+static/images/*
+static/animations/*
+!/static/images/.gitkeep
+!/static/animations/.gitkeep

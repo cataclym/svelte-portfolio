@@ -1,61 +1,67 @@
-<script>
-	export let images;
+<script lang="ts">
+	export let imagesArray: string[];
 </script>
-
-<div class="carousel">
-	<div class="carousel__container">
-		{#each images as image}
-			<img src={image.url} alt={image.alt} height="500" />
+<div class="container">
+	<div class="carousel">
+		{#each imagesArray as image}
+			<img src={image} class="rounded-xl" alt="" />
 		{/each}
-		{#each images as image}
-			<img src={image.url} alt={image.alt} height="500" />
+	</div>
+	<div class="carousel2">
+		{#each imagesArray as image}
+			<img src={image} class="rounded-xl" alt="" />
 		{/each}
 	</div>
 </div>
 
 <style>
-	.carousel {
-		height: 32em;
-		position: relative;
-		overflow: hidden;
-	}
+    .container {
+        display: inline-flex;
+        height: 32rem;
+    }
 
-	.carousel__container {
-		position: absolute;
-		top: 0;
-		left: 0;
-		overflow: hidden;
-		white-space: nowrap;
-		animation: bannermove 25s linear infinite;
-	}
+    .carousel {
+        transform: translateZ(0);
+        height: 32rem;
+        display: inline-flex;
+        animation: 30s imagemove linear infinite;
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+    }
 
-	:global(img) {
-		opacity: 0.9;
-		transition: all 0.2s;
-	}
-	:global(img):hover {
-		opacity: 1;
-		transform: scale(1.04);
-	}
+    .carousel2 {
+        transform: translateZ(0);
+        height: 32rem;
+        display: inline-flex;
+        animation: 30s imagemove2 linear infinite;
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+    }
 
-	.carousel__container img {
-		margin: 0 0.5em;
-	}
+    .carousel img {
+        height: 32rem;
+    }
 
-	.carousel:hover {
-		overflow: hidden;
-	}
+    .carousel img:hover, .carousel2 img:hover {
+        border: var(--accent1) 2px solid;
+    }
 
-	.carousel:hover .carousel__container {
-		animation-play-state: paused;
-	}
 
-	@keyframes bannermove {
-		0% {
-			transform: translate(0, 0);
-		}
-		100% {
-			transform: translate(-50%, 0);
-		}
-	}
+    @keyframes imagemove {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes imagemove2 {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(-19.7%);
+        }
+    }
 </style>

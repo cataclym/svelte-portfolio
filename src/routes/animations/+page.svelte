@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let data;
 
-	function enlargeImage(event: MouseEvent & Event) {
+	function enlargeVideo(event: MouseEvent & Event) {
 		const modal = document.getElementById('myModal');
 		const image = event.target;
 		const modalImg = document.getElementById('img01');
@@ -20,17 +20,15 @@
 <svelte:window on:click={closeModal}></svelte:window>
 <main class="overflow-visible">
 	<div>
-		<h2>Illustrations</h2>
+		<h2>Animations</h2>
 		<p>
-			Here you will find my illustration work from fan art, references online and original
-			characters. I personally enjoy drawing female characters as they have fun shapes for both
-			facial and body physics.
+			<mark>WIP: Description of the page</mark>
 		</p>
-		<ul class="flex flex-wrap justify-center gap-4 ">
-			{#each data.imagesArray as img}
+		<ul class="flex flex-wrap justify-center gap-4">
+			{#each data.animationsArray as animation}
 				<li class="basis-80 cursor-pointer relative h-80 gallery_li pl-0">
-					<img src={img} class="object-cover w-full h-full align-middle" alt={data.images[img.slice(9)]?.alt || ""}
-							 on:click|stopPropagation={enlargeImage} />
+					<video src={animation} class="object-cover w-full h-full align-middle custom_video_border" alt=""
+								 on:click|stopPropagation={enlargeVideo} />
 				</li>
 			{/each}
 		</ul>
@@ -38,8 +36,9 @@
 
 	<div id="myModal" class="modal">
 		<span class="close" on:click={closeModal}>&times;</span>
-		<img on:click|stopPropagation={() => false} class="modal-content" id="img01">
-		<div on:click|stopPropagation={() => false} id="caption"></div>
+		<video controls on:click|stopPropagation={() => false} class="modal-content" id="img01">
+			<div on:click|stopPropagation={() => false} id="caption"></div>
+		</video>
 	</div>
 </main>
 
@@ -51,14 +50,11 @@
 
     ul {
         padding-left: 0 !important;
+        list-style-type: none;
     }
 
     .gallery_li {
         flex: 1 1 auto;
-    }
-
-    .gallery_li::marker {
-        color: transparent;
     }
 
     .modal {
@@ -136,5 +132,16 @@
         .modal-content {
             width: 100%;
         }
+    }
+
+    .custom_video_border {
+        border-radius: 1rem;
+        transition: .3s;
+    }
+
+    .custom_video_border:hover {
+        transform: scale(1.04);
+        transition: .3s;
+        z-index: 1;
     }
 </style>
