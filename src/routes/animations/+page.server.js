@@ -1,9 +1,15 @@
-import { loadFileNames } from "../../functions/loading.js";
+import { loadFileNames } from '../../functions/loading.js';
 
 export async function load() {
-	const animationsArray = await loadFileNames("animations")
+	const [d2, d3, misc] = await Promise.all([
+		loadFileNames('animations/2d'),
+		loadFileNames('animations/3d'),
+		loadFileNames('animations/misc')
+	]);
 
 	return {
-		animationsArray,
+		d2,
+		d3,
+		misc
 	};
 }

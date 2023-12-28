@@ -17,7 +17,7 @@
 			<mark>WIP: Description</mark>
 		</p>
 		<ul class="flex flex-wrap justify-center gap-4">
-			{#each data.animationsArray as animation}
+			{#each data.d2 as animation}
 				<li class="basis-80 cursor-pointer relative h-80 gallery_li pl-0">
 					<video src={animation} class="object-cover w-full h-full align-middle custom_video_border"
 								 on:click|stopPropagation={enlargeVideo}>
@@ -32,7 +32,7 @@
 			<mark>WIP: Description</mark>
 		</p>
 		<ul class="flex flex-wrap justify-center gap-4">
-			{#each data.animationsArray as animation}
+			{#each data.d3 as animation}
 				<li class="basis-80 cursor-pointer relative h-80 gallery_li pl-0">
 					<video src={animation} class="object-cover w-full h-full align-middle custom_video_border"
 								 on:click|stopPropagation={enlargeVideo} >
@@ -47,7 +47,7 @@
 			<mark>WIP: Description</mark>
 		</p>
 		<ul class="flex flex-wrap justify-center gap-4">
-			{#each data.animationsArray as animation}
+			{#each data.misc as animation}
 				<li class="basis-80 cursor-pointer relative h-80 gallery_li pl-0">
 					<video src={animation} class="object-cover w-full h-full align-middle custom_video_border"
 								 on:click|stopPropagation={enlargeVideo} >
