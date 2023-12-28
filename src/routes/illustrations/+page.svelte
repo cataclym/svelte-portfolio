@@ -1,21 +1,6 @@
 <script lang="ts">
 	export let data;
-
-	function enlargeImage(event: MouseEvent & Event) {
-		const modal = document.getElementById('myModal');
-		const image = event.target;
-		const modalImg = document.getElementById('img01');
-		const captionText = document.getElementById('caption');
-
-		modal.style.display = 'block';
-		modalImg.src = image.src;
-		captionText.innerHTML = image.alt;
-	}
-
-	function closeModal(event: MouseEvent & Event) {
-		const modal = document.getElementById('myModal');
-		modal.style.display = 'none';
-	}
+	import {closeModal, closeModalButton, enlargeImage} from "../../functions/modal"
 </script>
 <svelte:window on:click={closeModal}></svelte:window>
 <main class="overflow-visible">
@@ -29,112 +14,21 @@
 		<ul class="flex flex-wrap justify-center gap-4 ">
 			{#each data.imagesArray as img}
 				<li class="basis-80 cursor-pointer relative h-80 gallery_li pl-0">
-					<img src={img} class="object-cover w-full h-full align-middle" alt={data.images[img.slice(9)]?.alt || ""}
-							 on:click|stopPropagation={enlargeImage} />
+					<a on:click|stopPropagation={enlargeImage} href={null}>
+						<img src={img} class="object-cover w-full h-full align-middle" alt={data.images[img.slice(9)]?.alt || ""} />
+					</a>
 				</li>
 			{/each}
 		</ul>
 	</div>
 
 	<div id="myModal" class="modal">
-		<span class="close" on:click={closeModal}>&times;</span>
-		<img on:click|stopPropagation={() => false} class="modal-content" id="img01">
-		<div on:click|stopPropagation={() => false} id="caption"></div>
+		<span class="close" on:click={closeModal} on:keypress={closeModalButton}>&times;</span>
+		<img on:click|stopPropagation={() => false} class="modal-content" id="img01" alt="">
+		<div id="caption"></div>
 	</div>
 </main>
 
 <style>
-    .gallery::after {
-        content: "";
-        flex-grow: 999;
-    }
-
-    ul {
-        padding-left: 0 !important;
-    }
-
-    .gallery_li {
-        flex: 1 1 auto;
-    }
-
-    .gallery_li::marker {
-        color: transparent;
-    }
-
-    .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        padding-top: 150px; /* Location of the box */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0, 0, 0); /* Fallback color */
-        background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
-    }
-
-    /* Modal Content (Image) */
-    .modal-content {
-        margin: auto;
-        display: block;
-        max-height: 80%;
-        max-width: 80%;
-    }
-
-    /* Caption of Modal Image (Image Text) - Same Width as the Image */
-    #caption {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 700px;
-        text-align: center;
-        color: var(--accent1);
-        padding: 10px 0;
-        height: 25px;
-    }
-
-    /* Add Animation - Zoom in the Modal */
-    .modal-content, #caption {
-        animation-name: zoom;
-        animation-duration: 0.6s;
-    }
-
-    .modal-content:hover {
-        transform: scale(1);
-    }
-
-    @keyframes zoom {
-        from {
-            transform: scale(0)
-        }
-        to {
-            transform: scale(1)
-        }
-    }
-
-    /* The Close Button */
-    .close {
-        position: absolute;
-        right: 35px;
-        color: var(--accent1);
-        font-size: 40px;
-        font-weight: bold;
-        transition: 0.3s;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: var(--accent3);
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    /* 100% Image Width on Smaller Screens */
-    @media only screen and (max-width: 700px) {
-        .modal-content {
-            width: 100%;
-        }
-    }
+    @import "../modal.css";
 </style>

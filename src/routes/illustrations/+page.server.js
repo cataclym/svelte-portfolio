@@ -1,17 +1,11 @@
-import { images } from '../../images.js';
-import fs from 'fs';
+import { illustrations } from "../../captions/illustrations.js";
+import { loadFileNames } from "../../functions/loading.js";
 
 export async function load() {
-	const imagesArray = (
-		await new Promise((resolve, reject) => {
-			fs.readdir('./static/images', undefined, (err, files) =>
-				err ? reject(err) : resolve(files.filter(f => f !== ".gitkeep"))
-			);
-		})
-	).map((img) => `./images/${img}`);
+	const imagesArray = await loadFileNames("illustrations")
 
 	return {
 		imagesArray,
-		images
+		images: illustrations
 	};
 }

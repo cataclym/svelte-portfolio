@@ -27,6 +27,6 @@ module.exports = {
 		node: true
 	},
 	rules: {
-		quotes: ["error", "double"]
+		quotes: ["error", "double"],
 	}
 };

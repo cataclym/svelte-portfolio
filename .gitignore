@@ -227,7 +227,12 @@ package
 
 build/
 
-static/images/*
+static/illustrations/*
 static/animations/*
-!/static/images/.gitkeep
+static/photography/*
+static/text/*
+
+!/static/illustrations/.gitkeep
 !/static/animations/.gitkeep
+!/static/photography/.gitkeep
+!/static/text/.gitkeep

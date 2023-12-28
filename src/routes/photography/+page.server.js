@@ -1,9 +1,9 @@
 import { loadFileNames } from "../../functions/loading.js";
 
 export async function load() {
-	const animationsArray = await loadFileNames("animations")
+	const imagesArray = await loadFileNames("photography")
 
 	return {
-		animationsArray,
+		imagesArray,
 	};
 }

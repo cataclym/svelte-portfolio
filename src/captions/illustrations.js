@@ -1,4 +1,4 @@
-export const images =
+export const illustrations =
 	{
 		"Illustration7.png": {
 			alt: "Pretty Girl",

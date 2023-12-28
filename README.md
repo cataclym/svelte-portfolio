@@ -1,10 +1,11 @@
 # Gallery portfolio
 ### Powered by sveltekit
 
-* Place images in `static/images/`
-* Place animations in `static/animations/`
-* Fill in `.env`, using `.env.example` as a template
-* Build app with `npm run build`
-* Deploy app with `node build`
+1. Place images in `static/images/`
+2. Place animations in `static/animations/`
+3. Place `favicon.png` and `selfie.jpg` in `static/`
+4. Fill in `.env`, using `.env.example` as a template
+5. Build app with `npm run build`
+6. Deploy app with `node build`
 
-#### This project was written for a personal commission
+#### This project was made for personal reasons, feel free to use

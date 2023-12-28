@@ -1,147 +1,68 @@
 <script lang="ts">
 	export let data;
+	import {closeModal, closeModalButton, enlargeImage as enlargeVideo} from "../../functions/modal"
 
-	function enlargeVideo(event: MouseEvent & Event) {
-		const modal = document.getElementById('myModal');
-		const image = event.target;
-		const modalImg = document.getElementById('img01');
-		const captionText = document.getElementById('caption');
-
-		modal.style.display = 'block';
-		modalImg.src = image.src;
-		captionText.innerHTML = image.alt;
-	}
-
-	function closeModal(event: MouseEvent & Event) {
-		const modal = document.getElementById('myModal');
-		modal.style.display = 'none';
-	}
 </script>
-<svelte:window on:click={closeModal}></svelte:window>
+
+<style>
+	@import "../modal.css";
+</style>
+
+<svelte:window on:click={closeModal} on:keyup={closeModalButton}></svelte:window>
 <main class="overflow-visible">
 	<div>
-		<h2>Animations</h2>
+
+		<h2>2D Animations</h2>
 		<p>
-			<mark>WIP: Description of the page</mark>
+			<mark>WIP: Description</mark>
 		</p>
 		<ul class="flex flex-wrap justify-center gap-4">
 			{#each data.animationsArray as animation}
 				<li class="basis-80 cursor-pointer relative h-80 gallery_li pl-0">
-					<video src={animation} class="object-cover w-full h-full align-middle custom_video_border" alt=""
-								 on:click|stopPropagation={enlargeVideo} />
+					<video src={animation} class="object-cover w-full h-full align-middle custom_video_border"
+								 on:click|stopPropagation={enlargeVideo}>
+						<track src="" kind="captions">
+					</video>
+				</li>
+			{/each}
+		</ul>
+
+		<h2>3D Animations</h2>
+		<p>
+			<mark>WIP: Description</mark>
+		</p>
+		<ul class="flex flex-wrap justify-center gap-4">
+			{#each data.animationsArray as animation}
+				<li class="basis-80 cursor-pointer relative h-80 gallery_li pl-0">
+					<video src={animation} class="object-cover w-full h-full align-middle custom_video_border"
+								 on:click|stopPropagation={enlargeVideo} >
+						<track src="" kind="captions">
+					</video>
+				</li>
+			{/each}
+		</ul>
+
+		<h2>3D Models and sculpting</h2>
+		<p>
+			<mark>WIP: Description</mark>
+		</p>
+		<ul class="flex flex-wrap justify-center gap-4">
+			{#each data.animationsArray as animation}
+				<li class="basis-80 cursor-pointer relative h-80 gallery_li pl-0">
+					<video src={animation} class="object-cover w-full h-full align-middle custom_video_border"
+								 on:click|stopPropagation={enlargeVideo} >
+					<track src="" kind="captions">
+					</video>
 				</li>
 			{/each}
 		</ul>
 	</div>
 
 	<div id="myModal" class="modal">
-		<span class="close" on:click={closeModal}>&times;</span>
+		<span class="close" contenteditable tabindex="0" role="button" aria-pressed="false" on:click={closeModal} on:keypress={closeModalButton}>&times;</span>
 		<video controls on:click|stopPropagation={() => false} class="modal-content" id="img01">
-			<div on:click|stopPropagation={() => false} id="caption"></div>
+			<div tabindex="0" role="button" aria-pressed="false" on:keypress={() => false} on:click|stopPropagation={() => false} id="caption"></div>
+			<track src="" kind="captions">
 		</video>
 	</div>
 </main>
-
-<style>
-    .gallery::after {
-        content: "";
-        flex-grow: 999;
-    }
-
-    ul {
-        padding-left: 0 !important;
-        list-style-type: none;
-    }
-
-    .gallery_li {
-        flex: 1 1 auto;
-    }
-
-    .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        padding-top: 150px; /* Location of the box */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0, 0, 0); /* Fallback color */
-        background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
-    }
-
-    /* Modal Content (Image) */
-    .modal-content {
-        margin: auto;
-        display: block;
-        max-height: 80%;
-        max-width: 80%;
-    }
-
-    /* Caption of Modal Image (Image Text) - Same Width as the Image */
-    #caption {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 700px;
-        text-align: center;
-        color: var(--accent1);
-        padding: 10px 0;
-        height: 25px;
-    }
-
-    /* Add Animation - Zoom in the Modal */
-    .modal-content, #caption {
-        animation-name: zoom;
-        animation-duration: 0.6s;
-    }
-
-    .modal-content:hover {
-        transform: scale(1);
-    }
-
-    @keyframes zoom {
-        from {
-            transform: scale(0)
-        }
-        to {
-            transform: scale(1)
-        }
-    }
-
-    /* The Close Button */
-    .close {
-        position: absolute;
-        right: 35px;
-        color: var(--accent1);
-        font-size: 40px;
-        font-weight: bold;
-        transition: 0.3s;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: var(--accent3);
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    /* 100% Image Width on Smaller Screens */
-    @media only screen and (max-width: 700px) {
-        .modal-content {
-            width: 100%;
-        }
-    }
-
-    .custom_video_border {
-        border-radius: 1rem;
-        transition: .3s;
-    }
-
-    .custom_video_border:hover {
-        transform: scale(1.04);
-        transition: .3s;
-        z-index: 1;
-    }
-</style>

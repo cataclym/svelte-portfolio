@@ -3,17 +3,19 @@
 @tailwind utilities;
 
 :root {
-    --accent1: rgb(222,215,208);
-    --accent2: rgb(161,126,154);
-    --accent3: rgb(175,122,126);
-    --accent4: rgb(190,137,138);
-    --background: rgb(77,63,109);
+    --accent1: #4E4E50;
+    --accent2: #6F2232;
+    --accent3: #950740;
+    --accent4: #C3073F;
+    --background: #1a1a1d;
+
+    --font-accent: #EAEAEC;
 
     background-color: var(--background);
 }
 
 html {
-    font-family: "Source Sans Pro", SansSerif;
+    font-family: "Source Sans Pro", SansSerif, serif;
     min-height: 100vh;
 }
 
@@ -29,27 +31,31 @@ main {
     overflow-x: hidden;
     overflow-y: hidden;
     min-height: 87vh;
+    max-width: 90%;
 }
 
 p {
-    color: var(--accent1);
+    color: var(--font-accent);
 }
 
-h2 {
-    color: var(--accent1);
+h1, h2, h3, h4 {
+    color: var(--font-accent);
+}
+
+mark {
+    background-color: var(--accent3);
+    color: var(--font-accent);
 }
 
 h2.frontPageHeader3 {
-    color: var(--accent1);
     font-weight: bolder;
     font-size: xxx-large;
-    border-bottom: 4px solid var(--accent2);
+    border-bottom: 4px solid var(--accent4);
     margin-bottom: 2rem;
 }
 
 h3.frontPageHeader3 {
-    color: var(--accent1);
-    border-bottom: 2px solid var(--accent2);
+    border-bottom: 2px solid var(--accent4);
 }
 
 .flexItemHidden {
@@ -62,63 +68,12 @@ h3.frontPageHeader3 {
     margin: 4em 0 0 0;
 }
 
-@media only screen and (max-width: 768px) {
-    .aboutImg {
-        width: 200px;
-        height: 200px;
-    }
-
-    .aboutParagraph {
-        max-width: 100%;
-    }
-
-    main {
-        max-width: 100%;
-    }
-
-
-}
-
-@media only screen and (min-width: 768px) {
-    .aboutImg {
-        width: 300px;
-        height: 300px;
-    }
-
-    .aboutParagraph {
-        max-width: 50%;
-    }
-
-    main {
-        max-width: 90%;
-    }
-
-    .aboutHeading {
-        width: 100%;
-    }
-}
-
-@media only screen and (min-width: 992px) {
-    .aboutImg {
-        width: 435px;
-        height: 435px;
-    }
-
-    .aboutParagraph {
-        max-width: 20%;
-    }
-
-    .aboutHeading {
-        width: 20%;
-    }
-}
-
-.grid_containter {
+.grid_container {
     display: grid;
     place-content: space-evenly;
     grid-template-columns: 100px 435px 435px 100px;
     grid-column-gap: 2rem;
-    grid-template-rows: auto;
+    grid-template-rows: repeat(2, minmax(40px, auto));
     grid-template-areas:
         ". header header ."
         ". paragraph image .";
@@ -127,15 +82,70 @@ h3.frontPageHeader3 {
 .grid_item_paragraph {
     grid-area: paragraph;
     margin-block-start: 0 !important;
+    order: 1;
 }
 
 .grid_item_img {
     grid-area: image;
+    margin-bottom: 2.5rem /* 40px */;
+    order: 2;
+    position: relative;
+}
+
+.grid_item_img img {
+    max-width:100%;
+    min-width: 65%;
+    height: auto;
 }
 
 .grid_header {
     grid-area: header;
     width: fit-content;
+    order: 0;
+}
+
+@media only screen and (max-width: 850px) {
+    main {
+        max-width: 100%;
+    }
+
+    h1, h2, h3, h4 {
+        margin: 10px 10px 10px 10px;
+    }
+
+    p {
+        margin: 0 10px;
+    }
+
+    h2.frontPageHeader3 {
+        margin-bottom: 0;
+    }
+
+    .grid_item_paragraph {
+        margin: 0 40px;
+    }
+
+    .grid_container {
+        grid-template: 50px 350px 445px / auto;
+        place-items: center;
+        text-align: center;
+        grid-row-gap: 0;
+        grid-row-gap: 50px;
+        grid-template-areas:
+                "header"
+                "paragraph"
+                "image";
+    }
+
+    .grid_item_img {
+        position: static;
+        margin-top: 10rem;
+    }
+
+    .grid_item_img img {
+        max-width: 95%;
+    }
+
 }
 
 .contact_page a {
@@ -153,8 +163,4 @@ h3.frontPageHeader3 {
     text-decoration-thickness: 2px;
     text-decoration-line: underline;
     transform: scale(1.04);
-}
-
-.contact_page h3 {
-    color: var(--accent1);
 }

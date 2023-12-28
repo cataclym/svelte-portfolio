@@ -1,67 +1,74 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+
 	export let imagesArray: string[];
+
+	onMount(() => {
+		const width = document.getElementById('container')
+			.offsetWidth;
+
+		document.documentElement.style
+			.setProperty('--transform-length', `-${width}px`);
+	});
+
+	let imgHTMLArray: string | string[] = [];
+
+	for (const img of imagesArray) {
+		imgHTMLArray.push(`<img src="${img}" class="rounded-xl" style="height: 32rem" alt="" />`)
+	}
+	imgHTMLArray = imgHTMLArray.join("\n");
+
 </script>
-<div class="container">
-	<div class="carousel">
-		{#each imagesArray as image}
-			<img src={image} class="rounded-xl" alt="" />
-		{/each}
+<span id="main_container">
+	<div id="container">
+		{@html imgHTMLArray}
 	</div>
-	<div class="carousel2">
-		{#each imagesArray as image}
-			<img src={image} class="rounded-xl" alt="" />
-		{/each}
+	<div id="container2">
+		{@html imgHTMLArray}
 	</div>
-</div>
+</span>
 
 <style>
-    .container {
-        display: inline-flex;
-        height: 32rem;
+    :root {
+        --transform-length: -1500px;
     }
 
-    .carousel {
-        transform: translateZ(0);
-        height: 32rem;
+		#main_container {
+				height: 32rem;
+        max-width: min-content;
+				display: flex;
+		}
+
+    #container, #container2 {
+				transform: translateZ(0);
         display: inline-flex;
-        animation: 30s imagemove linear infinite;
+        height: 32rem;
         flex-wrap: nowrap;
-        gap: 0.5rem;
+        max-width: min-content;
+        gap: 1rem;
+        animation: 30s imagemove infinite linear;
+        align-items: flex-start
     }
 
-    .carousel2 {
-        transform: translateZ(0);
-        height: 32rem;
-        display: inline-flex;
-        animation: 30s imagemove2 linear infinite;
-        flex-wrap: nowrap;
-        gap: 0.5rem;
+    #container2 {
+        animation: 30s imagemove2 infinite linear;
     }
-
-    .carousel img {
-        height: 32rem;
-    }
-
-    .carousel img:hover, .carousel2 img:hover {
-        border: var(--accent1) 2px solid;
-    }
-
 
     @keyframes imagemove {
         0% {
-            transform: translateX(0%);
+            transform: translateX(0);
         }
         100% {
-            transform: translateX(-100%);
+            transform: translateX(var(--transform-length));
         }
     }
 
     @keyframes imagemove2 {
         0% {
-            transform: translateX(0%);
+            transform: translateX(calc((var(--transform-length) * -1) - 100%));
         }
         100% {
-            transform: translateX(-19.7%);
+            transform: translateX(var(--transform-length));
         }
     }
 </style>
