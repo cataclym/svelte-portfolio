@@ -18,5 +18,12 @@ export function enlargeImage(event) {
 export function closeModal() {
 	const modal = document.getElementById("myModal");
 	modal.style.display = "none";
+
+	// Pause if video
+	const modalContent = document.getElementById("img01")
+
+	if (modalContent && modalContent.localName === "video") {
+		modalContent.pause();
+	}
 }
 
