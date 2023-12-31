@@ -1,17 +1,14 @@
-export async function load({ fetch }) {
+import fs from 'fs';
+import { resolve } from 'path';
 
-	const res = await fetch("/meta.json");
+export async function load() {
 
-	if (!res.ok) return {
-		"title": "",
-		"shortName": "",
-		"description": "",
-		"url": "",
-		"image": "",
-		"color": "#ffffff"
-	}
+	const res = await new Promise((resolve, reject) => fs.readFile("./static/meta.json", "utf-8", (err, data) => err
+		? reject(err)
+		: resolve(data)
+	))
 
-	const json = await res.json();
+	const json = JSON.parse(res);
 
 	const meta = `
 		<meta name="title" content="${json.title}">
