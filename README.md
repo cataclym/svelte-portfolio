@@ -5,7 +5,8 @@
 2. Place animations in `static/animations/`
 3. Place `favicon.png` and `selfie.jpg` in `static/`
 4. Fill in `.env`, using `.env.example` as a template
-5. Build app with `npm run build`
+5. Create `static/meta.json` based on `static/meta.example.json`
+6. Build app with `npm run build`
 6. Deploy app with `node build`
 
 #### This project was made for personal reasons, feel free to use

@@ -6,7 +6,7 @@ export async function load() {
 			@type string
 	 */
 		const contact = await new Promise((resolve, reject) => fs.readFile("./static/text/contact.txt", 'utf8', (err, data) => err
-			? reject(err)
+			? resolve("")
 			: resolve(data)
 		))
 

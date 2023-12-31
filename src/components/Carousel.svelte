@@ -4,11 +4,14 @@
 	export let imagesArray: string[];
 
 	onMount(() => {
-		const width = document.getElementById('container')
-			.offsetWidth;
+		const container = document.getElementById('container');
+		const container2 = document.getElementById('container2');
 
 		document.documentElement.style
-			.setProperty('--transform-length', `-${width}px`);
+			.setProperty('--transform-length', `-${container.offsetWidth}px`);
+
+		container.style.animationPlayState = "running";
+		container2.style.animationPlayState = "running";
 	});
 
 	let imgHTMLArray: string | string[] = [];
@@ -19,6 +22,7 @@
 	imgHTMLArray = imgHTMLArray.join("\n");
 
 </script>
+
 <span id="main_container">
 	<div id="container">
 		{@html imgHTMLArray}
@@ -30,7 +34,7 @@
 
 <style>
     :root {
-        --transform-length: -1500px;
+        --transform-length: 0px;
     }
 
 		#main_container {
@@ -46,12 +50,12 @@
         flex-wrap: nowrap;
         max-width: min-content;
         gap: 1rem;
-        animation: 30s imagemove infinite linear;
+        animation: 30s imagemove infinite linear paused;
         align-items: flex-start
     }
 
     #container2 {
-        animation: 30s imagemove2 infinite linear;
+        animation: 30s imagemove2 infinite linear paused;
     }
 
     @keyframes imagemove {

@@ -6,8 +6,8 @@ export async function load() {
 			? reject(err)
 			: resolve(files.filter(f => f !== ".gitkeep"))
 		)),
-		promiseText = new Promise((resolve, reject) => fs.readFile("./static/text/aboutMe.txt", 'utf8', (err, data) => err
-		? reject(err)
+		promiseText = new Promise((resolve) => fs.readFile("./static/text/aboutMe.txt", 'utf8', (err, data) => err
+		? resolve("")
 		: resolve(data)
 	))
 

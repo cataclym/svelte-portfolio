@@ -29,12 +29,12 @@
 		}
 	];
 
+	const capitalize = (s) => s && s[0].toUpperCase() + s.slice(1);
+
 	$: currentRoute = $page.url.pathname;
 	import { page } from '$app/stores';
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
 	import PageLoader from '../components/PageLoader.svelte';
-
-	const capitalize = (s) => s && s[0].toUpperCase() + s.slice(1);
 
 	beforeNavigate(() => {
 		navigationState.set('loading');
@@ -43,37 +43,14 @@
 	afterNavigate(() => {
 		navigationState.set('loaded');
 	});
+
+	export let data;
 </script>
 
 <svelte:head>
-	<meta name="title" content="Natalie">
-	<meta name="description"
-				content="WIP">
-
-	<!-- Open Graph / Facebook -->
-	<meta property="og:type" content="website">
-	<meta property="og:url" content="WIP">
-	<meta property="og:title" content="WIP">
-	<meta property="og:description"
-				content="WIP">
-	<meta property="og:image" content="WIP">
-
-	<!-- Twitter -->
-	<meta property="twitter:card" content="summary_large_image">
-	<meta property="twitter:url" content="WIP">
-	<meta property="twitter:title" content="WIP">
-	<meta property="twitter:description"
-				content="WIP">
-	<meta property="twitter:image" content="WIP">
-
-	<link rel="icon" type="image/png" href="/favicon.png">
-	<link rel="apple-touch-icon" type="image/png" href="/favicon.png">
-
-	<meta name="theme-color" content="#4D3F6D">
-
-	<title>Natalie - {capitalize($page.url.pathname.replace("/", "") || "Home")}</title>
+	{@html data.meta}
+	<title>{data.shortName} - {capitalize($page.url.pathname.replace("/", "") || "Home")}</title>
 </svelte:head>
-
 
 <div class="header">
 

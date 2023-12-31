@@ -3,6 +3,14 @@
 
 	export let data;
 	const { imagesArray, aboutMe } = data;
+
+	function fallback() {
+		return `https://placekitten.com/400/400`
+	}
+
+	function handleError(ev) {
+		ev.target.src = fallback()
+	}
 </script>
 
 <main>
@@ -17,7 +25,7 @@
 		</p>
 		<div class="grid_item_img">
 			<img alt="" class="rounded-xl"
-					 src="selfie.jpg" />
+					 src="selfie.jpg" on:error={handleError} />
 		</div>
 	</div>
 </main>
