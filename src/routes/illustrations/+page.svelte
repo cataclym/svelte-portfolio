@@ -1,12 +1,7 @@
 <script lang="ts">
 	import {closeModal, closeModalButton, enlargeImage} from "../../functions/modal"
 
-	const imagesArray: string[] = Object.keys(import.meta.glob('/src/assets/illustrations/*.webp', {
-			query: {
-				enhanced: true
-			}
-		})
-	);
+	export let data;
 </script>
 <svelte:window on:click={closeModal}></svelte:window>
 <main class="overflow-visible">
@@ -18,8 +13,7 @@
 			facial and body physics.
 		</p>
 		<ul class="flex flex-wrap justify-center gap-4 ">
-			{#each imagesArray as img}
-				{@debug img}
+			{#each data.imagesArray as img}
 				<li class="basis-80 cursor-pointer relative h-80 gallery_li pl-0">
 					<a on:click|stopPropagation={enlargeImage} href={null}>
 						<img src={img} class="object-cover w-full h-full align-middle" alt="" />

@@ -1,12 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	const imagesArray: string[] = Object.keys(import.meta.glob('/src/assets/illustrations/*.webp', {
-			query: {
-				enhanced: true
-			}
-		})
-	);
+	export let imagesArray: string[];
 
 	onMount(() => {
 		const container = document.getElementById('container');
