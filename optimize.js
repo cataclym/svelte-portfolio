@@ -9,7 +9,7 @@ try {
 }
 
 fs.mkdir("./static/illustrations/auto-generated", undefined, (err, path) => {
-	if (err.code !== "EEXIST") throw new Error(err)
+	if (err && err.code !== "EEXIST") throw new Error(err)
 	else if (path !== undefined) console.log(`Created ${path}.`)
 })
 
