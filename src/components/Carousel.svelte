@@ -1,7 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	export let imagesArray: string[];
+	const imagesArray: string[] = Object.keys(import.meta.glob('/src/assets/illustrations/*.webp', {
+			query: {
+				enhanced: true
+			}
+		})
+	);
 
 	onMount(() => {
 		const container = document.getElementById('container');
@@ -10,25 +15,21 @@
 		document.documentElement.style
 			.setProperty('--transform-length', `-${container.offsetWidth}px`);
 
-		container.style.animationPlayState = "running";
-		container2.style.animationPlayState = "running";
+		container.style.animationPlayState = 'running';
+		container2.style.animationPlayState = 'running';
 	});
-
-	let imgHTMLArray: string | string[] = [];
-
-	for (const img of imagesArray) {
-		imgHTMLArray.push(`<img src="${img}" class="rounded-xl" style="height: 32rem" alt="" />`)
-	}
-	imgHTMLArray = imgHTMLArray.join("\n");
-
 </script>
 
 <span id="main_container">
 	<div id="container">
-		{@html imgHTMLArray}
+			{#each imagesArray as src}
+				<img src={src} class="rounded-xl" style="height: 32rem" />
+			{/each}
 	</div>
 	<div id="container2">
-		{@html imgHTMLArray}
+			{#each imagesArray as src}
+				<img src={src} class="rounded-xl" style="height: 32rem" />
+			{/each}
 	</div>
 </span>
 
@@ -37,14 +38,14 @@
         --transform-length: 0px;
     }
 
-		#main_container {
-				height: 32rem;
+    #main_container {
+        height: 32rem;
         max-width: min-content;
-				display: flex;
-		}
+        display: flex;
+    }
 
     #container, #container2 {
-				transform: translateZ(0);
+        transform: translateZ(0);
         display: inline-flex;
         height: 32rem;
         flex-wrap: nowrap;

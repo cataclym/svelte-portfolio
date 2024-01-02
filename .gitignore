@@ -223,6 +223,7 @@ package
 
 build/
 
+!/src/assets/illustrations/.gitkeep
 !/static/animations/2d/.gitkeep
 !/static/animations/3d/.gitkeep
 !/static/animations/misc/.gitkeep
@@ -230,8 +231,9 @@ build/
 !/static/photography/.gitkeep
 !/static/text/.gitkeep
 
+src/assets/illustrations/*
 static/animations/*
 static/illustrations/*
+static/meta.json
 static/photography/*
 static/text/*
-static/meta.json
