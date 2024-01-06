@@ -1,25 +1,19 @@
 module.exports = {
 	root: true,
-	parser: '@typescript-eslint/parser',
-	extends: [
-		'eslint:recommended',
-		'plugin:@typescript-eslint/recommended',
-		'prettier',
-		'plugin:svelte/recommended'
-	],
-	plugins: ['@typescript-eslint'],
-	ignorePatterns: ['*.cjs'],
+	extends: ["eslint:recommended", "prettier", "plugin:svelte/recommended"],
+	plugins: ["@typescript-eslint"],
+	ignorePatterns: ["*.cjs"],
 	overrides: [
 		{
-			files: ['*.svelte'],
-			parser: 'svelte-eslint-parser',
+			files: ["*.svelte", "*.js", "*.css"],
+			parser: "svelte-eslint-parser",
 			parserOptions: {
-				parser: '@typescript-eslint/parser'
+				parser: "@typescript-eslint/parser"
 			}
 		}
 	],
 	parserOptions: {
-		sourceType: 'module',
+		sourceType: "module",
 		ecmaVersion: 2022
 	},
 	env: {
@@ -27,6 +21,6 @@ module.exports = {
 		node: true
 	},
 	rules: {
-		quotes: ["error", "double"],
+		quotes: ["error", "double"]
 	}
 };

@@ -1,12 +1,10 @@
-import fs from 'fs';
-import { resolve } from 'path';
+import fs from "fs";
+import { resolve } from "path";
 
 export async function load() {
-
-	const res = await new Promise((resolve, reject) => fs.readFile("./static/meta.json", "utf-8", (err, data) => err
-		? reject(err)
-		: resolve(data)
-	))
+	const res = await new Promise((resolve, reject) =>
+		fs.readFile("./static/meta.json", "utf-8", (err, data) => (err ? reject(err) : resolve(data)))
+	);
 
 	const json = JSON.parse(res);
 
@@ -32,12 +30,12 @@ export async function load() {
 		<link rel="apple-touch-icon" type="image/png" href="/favicon.png">
 		
 		<meta name="theme-color" content="${json.color}">	
-	`
+	`;
 
 	const { shortName } = json;
 
 	return {
 		meta,
 		shortName
-	}
+	};
 }

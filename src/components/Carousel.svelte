@@ -18,12 +18,12 @@
 <span id="main_container">
 	<div id="container">
 			{#each imagesArray as src}
-				<img src={src} class="rounded-xl" style="height: 32rem" />
+				<img src={src} class="rounded-xl" style="height: 32rem" alt="" />
 			{/each}
 	</div>
 	<div id="container2">
 			{#each imagesArray as src}
-				<img src={src} class="rounded-xl" style="height: 32rem" />
+				<img src={src} class="rounded-xl" style="height: 32rem" alt="" />
 			{/each}
 	</div>
 </span>

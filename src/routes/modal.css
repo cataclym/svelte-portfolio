@@ -1,101 +1,97 @@
-.gallery::after {
-    content: "";
-    flex-grow: 999;
-}
-
 ul {
-    padding-left: 0 !important;
-    list-style-type: none;
+	padding-left: 0 !important;
+	list-style-type: none;
 }
 
 .gallery_li {
-    flex: 1 1 auto;
+	flex: 1 1 auto;
 }
 
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 150px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0); /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 150px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
 }
 
 /* Modal Content (Image) */
 .modal-content {
-    margin: auto;
-    display: block;
-    max-height: 80%;
-    max-width: 80%;
+	margin: auto;
+	display: block;
+	max-height: 80%;
+	max-width: 80%;
 }
 
 /* Caption of Modal Image (Image Text) - Same Width as the Image */
 #caption {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-    color: var(--font-accent);
-    padding: 10px 0;
-    height: 25px;
+	margin: auto;
+	display: block;
+	width: 80%;
+	max-width: 700px;
+	text-align: center;
+	color: var(--font-accent);
+	padding: 10px 0;
+	height: 25px;
 }
 
 /* Add Animation - Zoom in the Modal */
-.modal-content, #caption {
-    animation-name: zoom;
-    animation-duration: 0.6s;
+.modal-content,
+#caption {
+	animation-name: zoom;
+	animation-duration: 0.6s;
 }
 
 .modal-content:hover {
-    transform: scale(1);
+	transform: scale(1);
 }
 
 @keyframes zoom {
-    from {
-        transform: scale(0)
-    }
-    to {
-        transform: scale(1)
-    }
+	from {
+		transform: scale(0);
+	}
+	to {
+		transform: scale(1);
+	}
 }
 
 /* The Close Button */
 .close {
-    position: absolute;
-    right: 35px;
-    color: var(--font-accent);
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
+	position: absolute;
+	right: 35px;
+	color: var(--font-accent);
+	font-size: 40px;
+	font-weight: bold;
+	transition: 0.3s;
 }
 
 .close:hover,
 .close:focus {
-    color: var(--accent3);
-    text-decoration: none;
-    cursor: pointer;
+	color: var(--accent3);
+	text-decoration: none;
+	cursor: pointer;
 }
 
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px) {
-    .modal-content {
-        width: 100%;
-    }
+	.modal-content {
+		width: 100%;
+	}
 }
 
 .custom_video_border {
-    border-radius: 1rem;
-    transition: .3s;
+	border-radius: 1rem;
+	transition: 0.3s;
 }
 
 .custom_video_border:hover {
-    transform: scale(1.04);
-    transition: .3s;
-    z-index: 1;
+	transform: scale(1.04);
+	transition: 0.3s;
+	z-index: 1;
 }

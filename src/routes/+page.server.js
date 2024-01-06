@@ -1,5 +1,5 @@
-import fs from 'fs';
-import { loadFileNames } from '../functions/loading.js';
+import fs from "fs";
+import { loadFileNames } from "../functions/loading.js";
 
 export async function load() {
 	/** @const
@@ -7,16 +7,15 @@ export async function load() {
 	 */
 	const [aboutMe, imagesArray] = await Promise.all([
 		new Promise((resolve) =>
-			fs.readFile('./static/text/aboutMe.txt', 'utf8', (err, data) =>
-				err ? resolve('') : resolve(data)
+			fs.readFile("./static/text/aboutMe.txt", "utf8", (err, data) =>
+				err ? resolve("") : resolve(data)
 			)
 		),
-		loadFileNames('illustrations/auto-generated')
+		loadFileNames("illustrations/auto-generated")
 	]);
 
 	return {
 		aboutMe,
-		imagesArray: imagesArray
-			.sort(() => Math.random() - 0.5),
+		imagesArray: imagesArray.sort(() => Math.random() - 0.5)
 	};
 }

@@ -1,68 +1,43 @@
 <script lang="ts">
-	export let data;
-	import {closeModal, closeModalButton, enlargeImage as enlargeVideo} from "../../functions/modal"
+	import { goto } from "$app/navigation";
+	import { animations } from "../../captions/animations"
 
+	export let data;
 </script>
 
 <style>
-	@import "../modal.css";
+    @import "../modal.css";
 </style>
 
-<svelte:window on:click={closeModal} on:keyup={closeModalButton}></svelte:window>
 <main class="overflow-visible">
 	<div>
 
 		<h2>2D Animations</h2>
-		<p>
-			<mark>WIP: Description</mark>
-		</p>
-		<ul class="flex flex-wrap justify-center gap-4">
-			{#each data.d2 as animation}
-				<li class="basis-80 cursor-pointer relative h-80 gallery_li pl-0">
-					<video src={animation} class="object-cover w-full h-full align-middle custom_video_border"
-								 on:click|stopPropagation={enlargeVideo}>
-						<track src="" kind="captions">
-					</video>
+		<ul class="flex flex-wrap justify-center overflow-visible">
+			{#each data.files2d as anim}
+				{@const file = anim.slice(anim.lastIndexOf("/") + 1)}
+				{@const path = encodeURI(anim.slice(0, anim.indexOf(".mp4")))}
+				<li class="basis-96 relative h-96 gallery_li pl-0">
+					<h3>{animations[file]?.alt || "Animation"}</h3>
+					<a style="cursor: pointer" href={null} on:click={() => goto(path, { replaceState: true })}>
+						<video preload="metadata" src={anim} class="object-cover w-full h-80 align-middle custom_video_border" />
+					</a>
 				</li>
 			{/each}
 		</ul>
 
 		<h2>3D Animations</h2>
-		<p>
-			<mark>WIP: Description</mark>
-		</p>
-		<ul class="flex flex-wrap justify-center gap-4">
-			{#each data.d3 as animation}
-				<li class="basis-80 cursor-pointer relative h-80 gallery_li pl-0">
-					<video src={animation} class="object-cover w-full h-full align-middle custom_video_border"
-								 on:click|stopPropagation={enlargeVideo} >
-						<track src="" kind="captions">
-					</video>
+		<ul class="flex flex-wrap justify-center overflow-visible">
+			{#each data.files3d as anim}
+				{@const file = anim.slice(anim.lastIndexOf("/") + 1)}
+				{@const path = encodeURI(anim.slice(0, anim.indexOf(".mp4")))}
+				<li class="basis-96 relative h-96 gallery_li pl-0">
+					<h3>{animations[file]?.alt || "Animation"}</h3>
+					<a style="cursor: pointer" href={null} on:click={() => goto(path, { replaceState: true })}>
+						<video preload="metadata" src={anim} class="object-cover w-full h-80 align-middle custom_video_border" />
+					</a>
 				</li>
 			{/each}
 		</ul>
-
-		<h2>3D Models and sculpting</h2>
-		<p>
-			<mark>WIP: Description</mark>
-		</p>
-		<ul class="flex flex-wrap justify-center gap-4">
-			{#each data.misc as animation}
-				<li class="basis-80 cursor-pointer relative h-80 gallery_li pl-0">
-					<video src={animation} class="object-cover w-full h-full align-middle custom_video_border"
-								 on:click|stopPropagation={enlargeVideo} >
-					<track src="" kind="captions">
-					</video>
-				</li>
-			{/each}
-		</ul>
-	</div>
-
-	<div id="myModal" class="modal">
-		<span class="close" contenteditable tabindex="0" role="button" aria-pressed="false" on:click={closeModal} on:keypress={closeModalButton}>&times;</span>
-		<video controls on:click|stopPropagation={() => false} class="modal-content" id="img01">
-			<div tabindex="0" role="button" aria-pressed="false" on:keypress={() => false} on:click|stopPropagation={() => false} id="caption"></div>
-			<track src="" kind="captions">
-		</video>
 	</div>
 </main>

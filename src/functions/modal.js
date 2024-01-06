@@ -1,7 +1,7 @@
 export function closeModalButton(event) {
-	console.log(event.key, this)
+	console.log(event.key, this);
 	if (event.key !== "Esc" || event.keyCode !== 27 || event.key !== "Escape") return;
-	closeModal.call(this.document)
+	closeModal.call(this.document);
 }
 
 export function enlargeImage(event) {
@@ -20,10 +20,9 @@ export function closeModal() {
 	modal.style.display = "none";
 
 	// Pause if video
-	const modalContent = document.getElementById("img01")
+	const modalContent = document.getElementById("img01");
 
 	if (modalContent && modalContent.localName === "video") {
 		modalContent.pause();
 	}
 }
-
