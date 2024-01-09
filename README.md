@@ -4,9 +4,9 @@
 
 #### This project was made for personal reasons, feel free to use
 
-1. Place images in `static/images/`
+1. Place images in `static/illustrations/`
 2. Place images in `static/photography/`
-3. Place animations in `static/animations/`
+3. Place animations in `static/animations/2d` and `static/animations/3d`
 
    > For images to appear below the video, place images in a folder named the same as the video file:
    >
@@ -23,6 +23,6 @@
 4. Place `favicon.png` and `selfie.jpg` in `static/`
 5. Fill in `.env`, using `.env.example` as a template
 6. Create `static/meta.json` based on `static/meta.example.json`
-7. Optimize images with `npm run optimize` (PNG to WEBP)
+7. **REQUIRES ffmpeg and cwebp** | Optimize images with `npm run optimize` (PNG to WEBP)
 8. Build app with `npm run build`
 9. Deploy app with `node build`

@@ -5,6 +5,7 @@ ul {
 
 .gallery_li {
 	flex: 1 1 auto;
+	height: 30rem;
 }
 
 .modal {

@@ -7,8 +7,12 @@
 <svelte:window on:click={closeModal}></svelte:window>
 <main class="overflow-visible">
 	<h2>{data.data.alt}</h2>
-	<video controls src="/animations/{data.params.category}/{data.video}"
-				 class="object-cover w-full h-full align-middle custom_video_border no_hover" />
+	<video controls class="w-auto h-auto max-w-screen-sm custom_video_border no_hover block m-auto">
+		<source src="/animations/{data.params.category}/{data.video}" type="video/mp4">
+		{#if data.webm}
+			<source src="/animations/{data.params.category}/{data.webm}" type="video/webm">
+		{/if}
+	</video>
 	<div class="flex justify-center mt-10 mb-10">
 		<a href="/animations">
 			<button class="custom_button_style">Back</button>

@@ -14,29 +14,39 @@ export async function load({ params }) {
 		(value) => value.slice(0, value.indexOf(".mp4")) === paramFileLocation
 	);
 
-	// If images have been optimized
-	const isOptimized = await new Promise((resolve) =>
-		fs.readdir(
-			`./static/animations/${params.category}/${paramFileLocation}`,
-			{ withFileTypes: true },
-			(err, files) => {
+	// Checks if there are images at all
+	// Check if they are optimized
+	// Check if there is a webm optimized file
+	const [isImages, isOptimized, webm] = await Promise.all([
+		new Promise((resolve) =>
+			fs.readdir(
+				`./static/animations/${params.category}/${paramFileLocation}`,
+				{ withFileTypes: true },
+				(err, files) => {
+					if (err) return resolve(false);
+					resolve(true);
+				}
+			)
+		),
+		new Promise((resolve) =>
+			fs.readdir(
+				`./static/animations/${params.category}/${paramFileLocation}`,
+				{ withFileTypes: true },
+				(err, files) => {
+					if (err) return resolve(false);
+					resolve(files.find((f) => f.isDirectory() && f.name === "auto-generated"));
+				}
+			)
+		),
+		new Promise((resolve) =>
+			fs.readdir(`./static/animations/${params.category}`, (err, files) => {
 				if (err) return resolve(false);
-				resolve(files.find((f) => f.isDirectory() && f.name === "auto-generated"));
-			}
+				if (files.some((f) => f === `${paramFileLocation}.webm`))
+					resolve(`${paramFileLocation}.webm`);
+				resolve(false);
+			})
 		)
-	);
-
-	// Check if there are images
-	const isImages = await new Promise((resolve) =>
-		fs.readdir(
-			`./static/animations/${params.category}/${paramFileLocation}`,
-			{ withFileTypes: true },
-			(err, files) => {
-				if (err) return resolve(false);
-				resolve(true);
-			}
-		)
-	);
+	]);
 
 	const images = isImages
 		? await loadFileNames(
@@ -45,9 +55,10 @@ export async function load({ params }) {
 		: [];
 
 	return {
-		data: video ? animations[video] : { alt: paramFileLocation },
+		data: animations[video] || { alt: paramFileLocation },
 		images,
 		params,
-		video: video ?? `${paramFileLocation}.mp4`
+		video: `${paramFileLocation}.mp4`,
+		webm
 	};
 }
