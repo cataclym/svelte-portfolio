@@ -108,6 +108,7 @@ async function optimizeImage(location) {
 
 	const mapped = await Promise.all(files.map(async (f) => JSON.stringify(f.name)));
 
+	// Only optimize (convert) .png to .webp
 	return Promise.all(
 		mapped.map(async (file) => {
 			const query = `${location}/${file} -o ${location}/auto-generated/${file

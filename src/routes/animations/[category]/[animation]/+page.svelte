@@ -8,10 +8,10 @@
 <main class="overflow-visible">
 	<h2>{data.data.alt}</h2>
 	<video controls class="w-auto h-auto max-w-screen-sm custom_video_border no_hover block m-auto">
-		<source src="/animations/{data.params.category}/{data.video}" type="video/mp4">
 		{#if data.webm}
 			<source src="/animations/{data.params.category}/{data.webm}" type="video/webm">
 		{/if}
+		<source src="/animations/{data.params.category}/{data.video}" type="video/mp4">
 	</video>
 	<div class="flex justify-center mt-10 mb-10">
 		<a href="/animations">

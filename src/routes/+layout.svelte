@@ -1,47 +1,47 @@
 <script>
-	import '../app.css';
-	import navigationState from '../stores/navigationState';
-	import { fade } from 'svelte/transition';
+	import "../app.css";
+	import navigationState from "../stores/navigationState";
+	import { fade } from "svelte/transition";
 
 	import {
 		PUBLIC_INSTAGRAM,
 		PUBLIC_LINKEDIN,
 		PUBLIC_WHATSAPP,
 		PUBLIC_TWITTER
-	} from '$env/static/public';
+	} from "$env/static/public";
 
 	const navigationTargets = [
 		{
-			name: 'Illustrations',
-			url: '/illustrations'
+			name: "Illustrations",
+			url: "/illustrations"
 		},
 		{
-			name: 'Animations',
-			url: '/animations'
+			name: "Animations",
+			url: "/animations"
 		},
 		{
-			name: 'Photography',
-			url: '/photography'
+			name: "Photography",
+			url: "/photography"
 		},
 		{
-			name: 'Contact',
-			url: '/contact'
+			name: "Contact",
+			url: "/contact"
 		}
 	];
 
 	const capitalize = (s) => s && s[0].toUpperCase() + s.slice(1);
 
 	$: currentRoute = $page.url.pathname;
-	import { page } from '$app/stores';
-	import { afterNavigate, beforeNavigate } from '$app/navigation';
-	import PageLoader from '../components/PageLoader.svelte';
+	import { page } from "$app/stores";
+	import { afterNavigate, beforeNavigate } from "$app/navigation";
+	import PageLoader from "../components/PageLoader.svelte";
 
 	beforeNavigate(() => {
-		navigationState.set('loading');
+		navigationState.set("loading");
 	});
 
 	afterNavigate(() => {
-		navigationState.set('loaded');
+		navigationState.set("loaded");
 	});
 
 	export let data;
@@ -53,7 +53,6 @@
 </svelte:head>
 
 <div class="header">
-
 	<div class="leftPart">
 		<a class="linkContainer" href="/">
 			<span class:active={currentRoute === "/"} class="linktext">Home</span>
@@ -130,7 +129,6 @@
 
     .linktext {
         border-bottom: 5px solid transparent;
-        font-family: 'Source Sans Pro';
         font-style: normal;
         font-weight: normal;
         font-size: 22px;

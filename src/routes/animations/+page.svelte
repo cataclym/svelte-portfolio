@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
-	import { animations } from "../../captions/animations"
+	import { animations } from "../../captions/animations";
 
 	export let data;
 </script>
@@ -20,12 +20,12 @@
 				{@const hasWebm = data.webm2d.find(f => f.slice(0, -5) === fileNameNoExt)}
 				<li class="basis-96 relative gallery_li pl-0">
 					<h3>{animations[file]?.alt || file.slice(0, -4)}</h3>
-					<a style="cursor: pointer" href={null} on:click={() => goto(path, { replaceState: true })}>
+					<a style="cursor: pointer" href={null} on:click={() => goto(path, { replaceState: false })}>
 						<video preload="metadata" class="object-cover w-full h-full align-middle custom_video_border">
-							<source src={anim} type="video/mp4">
 							{#if hasWebm}
-								<source src={hasWebm} type="video/mp4">
+								<source src={hasWebm} type="video/webm">
 							{/if}
+							<source src={anim} type="video/mp4">
 						</video>
 					</a>
 				</li>
@@ -42,7 +42,12 @@
 				<li class="basis-96 relative h-96 gallery_li pl-0">
 					<h3>{animations[file]?.alt || file.slice(0, -4)}</h3>
 					<a style="cursor: pointer" href={null} on:click={() => goto(path, { replaceState: true })}>
-						<video preload="metadata" src={anim} class="object-cover w-full h-96 align-middle custom_video_border" />
+						<video preload="metadata" class="object-cover w-full h-full align-middle custom_video_border">
+							{#if hasWebm}
+								<source src={hasWebm} type="video/webm">
+							{/if}
+							<source src={anim} type="video/mp4">
+						</video>
 					</a>
 				</li>
 			{/each}
